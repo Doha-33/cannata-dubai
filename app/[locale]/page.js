@@ -10,40 +10,80 @@ import Home10 from "@/components/Home10";
 import seoConfig from "@/config/seoConfig";
 
 export async function generateMetadata({ params }) {
-  const locale = params.locale;
+  const locale = params?.locale || 'en';
   const seo = seoConfig.home[locale] || seoConfig.home.en;
 
   return {
     title: seo.title,
     description: seo.description,
     keywords: seo.keywords,
+    canonical: seo.canonical,
+    
     alternates: {
+      canonical: seo.canonical,
       languages: {
         en: seoConfig.home.en.url,
         ar: seoConfig.home.ar.url,
+        'x-default': seoConfig.home.en.url,
       },
     },
+    
     openGraph: {
-      title: seo.title,
-      description: seo.description,
+      title: seo.openGraph?.title || seo.title,
+      description: seo.openGraph?.description || seo.description,
       url: seo.url,
-      siteName: "Cannata",
-      locale: locale === "ar" ? "ar_EG" : "en_US",
-      type: "website",
+      siteName: seo.openGraph?.siteName || "Cannata",
+      locale: seo.openGraph?.locale || (locale === "ar" ? "ar_AE" : "en_US"),
+      type: seo.openGraph?.type || "website",
+      images: [
+        {
+          url: seo.openGraph?.image || '/og-images/cannata-shipping-home.jpg',
+          width: 1200,
+          height: 630,
+          alt: seo.title,
+        },
+      ],
+    },
+    
+    twitter: {
+      card: seo.twitterCard?.card || 'summary_large_image',
+      title: seo.twitterCard?.title || seo.title,
+      description: seo.twitterCard?.description || seo.description,
+      images: [seo.twitterCard?.image || '/twitter-images/cannata-home.jpg'],
+    },
+    
+    other: {
+      keywords: seo.keywords,
     },
   };
 }
+
 export default function Page({ params }) {
+  const locale = params?.locale || 'en';
+  const seoData = seoConfig.home[locale] || seoConfig.home.en;
+
+  const jsonLd = {
+    ...seoData.schema,
+    url: seoData.url,
+  };
+
   return (
-    <div>
-      <Home1 locale={params.locale} />
-      <Home2 locale={params.locale} />
-      <Home8 locale={params.locale} />
-      {/* <Home9 locale={params.locale} /> */}
-      <Home3 locale={params.locale} />
-      {/* <Home6 locale={params.locale} /> */}
-      <Home10 locale={params.locale} />
-      <Home7Wrapper locale={params.locale} />
-    </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd),
+        }}
+      />
+      
+      <div>
+        <Home1 locale={locale} />
+        <Home2 locale={locale} />
+        <Home8 locale={locale} />
+        <Home3 locale={locale} />
+        <Home10 locale={locale} />
+        <Home7Wrapper locale={locale} />
+      </div>
+    </>
   );
 }

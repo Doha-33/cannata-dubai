@@ -20,9 +20,9 @@ const Home2 = ({ about }) => {
           transition={{ duration: 1.5 }}
           viewport={{ once: true, amount: 0.3 }}
         >
-          <h1 className="mb-5" style={{ direction: isArabic ? "rtl" : "ltr" }}>
+          <h2 className="mb-5" style={{ direction: isArabic ? "rtl" : "ltr" }}>
             {t("ABOUT COMPANY")}
-          </h1>
+          </h2>
           <div
             dangerouslySetInnerHTML={{
               __html: about?.about[isArabic ? "ar" : "en"] || "",

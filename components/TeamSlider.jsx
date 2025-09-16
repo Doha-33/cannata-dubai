@@ -75,8 +75,8 @@ export default function TeamSlider({ team, locale }) {
                 src={item.image}
                 alt="team-member"
               />
-              <p className="name">{item.title[isArabic ? "ar" : "en"]}</p>
-              <p className="position">{item.content[isArabic ? "ar" : "en"]}</p>
+              <h5 className="name">{item.title[isArabic ? "ar" : "en"]}</h5>
+              <h5 className="position">{item.content[isArabic ? "ar" : "en"]}</h5>
             </div>
           </SwiperSlide>
         ))}

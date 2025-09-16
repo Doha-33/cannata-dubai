@@ -65,9 +65,9 @@ export default function SliderClient({ slides}) {
               >
                 <img src={slide.image} alt={slide.image_alt || "slide"} />
                 <div className="content">
-                  <div className="title">
+                  <h1 className="title">
                     {isArabic ? slide.title.ar : slide.title.en}
-                  </div>
+                  </h1>
                   <div className="description">
                     {isArabic ? slide.desc.ar : slide.desc.en}
                   </div>

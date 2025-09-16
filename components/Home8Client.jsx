@@ -7,7 +7,7 @@ export const revalidate = 0;
 export default function Home8Client({ historyData, isArabic }) {
   return (
     <div>
-      <motion.h1
+      <motion.h2
         className="pt-5"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -15,7 +15,7 @@ export default function Home8Client({ historyData, isArabic }) {
         viewport={{ once: true, amount: 0.3 }}
       >
         {isArabic ? "تاريخنا" : "OUR HISTORY"}
-      </motion.h1>
+      </motion.h2>
 
       <div className={`timeline ${isArabic ? "rtl" : "ltr"}`}>
         {historyData.map((item, index) => (

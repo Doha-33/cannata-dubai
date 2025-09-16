@@ -51,6 +51,7 @@ const MapComponent = () => {
           height: "450px",
           width: "80%",
           borderRadius: "10px",
+          margin:"auto"
         }}
       >
         <TileLayer
