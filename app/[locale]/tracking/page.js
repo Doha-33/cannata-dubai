@@ -29,7 +29,8 @@ export async function generateMetadata({ params }) {
       type: seo.openGraph?.type || "website",
       images: [
         {
-          url: seo.openGraph?.image || "/og-images/cannata-shipping-tracking.jpg",
+          url:
+            seo.openGraph?.image || "/og-images/cannata-shipping-tracking.jpg",
           width: 1200,
           height: 630,
           alt: seo.title,
@@ -41,11 +42,28 @@ export async function generateMetadata({ params }) {
       card: seo.twitterCard?.card || "summary_large_image",
       title: seo.twitterCard?.title || seo.title,
       description: seo.twitterCard?.description || seo.description,
-      images: [seo.twitterCard?.image || "/twitter-images/cannata-tracking.jpg"],
+      images: [
+        seo.twitterCard?.image || "/twitter-images/cannata-tracking.jpg",
+      ],
     },
 
     other: {
       keywords: seo.keywords,
+
+      alternates: {
+        languages: {
+          en: seoConfig.tracking.en.url,
+          ar: seoConfig.tracking.ar.url,
+        },
+      },
+      openGraph: {
+        title: seo.title,
+        description: seo.description,
+        url: seo.url,
+        siteName: "Cannata",
+        locale: locale === "ar" ? "ar_EG" : "en_US",
+        type: "website",
+      },
     },
   };
 }
