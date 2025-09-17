@@ -36,14 +36,9 @@ const Navbar = () => {
   }, []);
 
   const handleNavItemClick = () => {
-    if (typeof window !== "undefined" && window.bootstrap) {
-      const navbarCollapse = document.getElementById("navbarNav");
-      if (navbarCollapse && navbarCollapse.classList.contains("show")) {
-        const bsCollapse =
-          window.bootstrap.Collapse.getInstance(navbarCollapse) ||
-          new window.bootstrap.Collapse(navbarCollapse, { toggle: false });
-        bsCollapse.hide();
-      }
+    const navbarCollapse = document.getElementById("navbarNav");
+    if (navbarCollapse && navbarCollapse.classList.contains("show")) {
+      navbarCollapse.classList.remove("show");
     }
   };
 
@@ -73,36 +68,79 @@ const Navbar = () => {
         style={{ backgroundColor: "rgb(45, 44, 111)", height: "40px" }}
       >
         <div className="d-flex align-items-center link">
-          <IoPersonCircleOutline size={20} />
-          <span className="px-2">
-            {authToken ? (
-              <>
-                <span className="link text-white">
-                  {t("Welcome")}, {userName} /
-                </span>
+          <div className="dropdown user-dropdown">
+            <button
+              className="btn user-btn d-flex align-items-center justify-content-center pt-4"
+              type="button"
+              id="userMenuButton"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <IoPersonCircleOutline size={26} className="m-2" />
+              <span>{authToken ? userName : t("Account")}</span>
+            </button>
 
-                <Link
-                  onClick={removeToken}
-                  className="link ms-2"
-                  href={`/${locale}`}
-                >
-                  {t("Log out")}
-                </Link>
-              </>
-            ) : (
-              <div>
-                <Link className="link" href={`/${locale}/signUp`}>
-                  {t("Sign Up")}{" "}
-                </Link>
-                /
-                <Link className="link" href={`/${locale}/login`}>
-                  {" "}
-                  {t("Sign In")}
-                </Link>
-              </div>
-            )}
-          </span>
+            <ul className="dropdown-menu dropdown-menu-end shadow-sm border-0 rounded-3 p-2">
+              {authToken ? (
+                <>
+                  <li>
+                    <Link
+                      className="dropdown-item rounded-2"
+                      href={`/${locale}/editprofile`}
+                      onClick={handleNavItemClick}
+                    >
+                      <i className="bi bi-person me-2"></i>
+                      {t("Profile")}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="dropdown-item rounded-2"
+                      href={`/${locale}/order`}
+                      onClick={handleNavItemClick}
+                    >
+                      <i className="bi bi-bag-check me-2"></i>
+                      {t("My Orders")}
+                    </Link>
+                  </li>
+                  <li>
+                    <button
+                      className="dropdown-item text-danger rounded-2"
+                      onClick={removeToken}
+                    >
+                      <i className="bi bi-box-arrow-right me-2"></i>
+                      {t("Log out")}
+                    </button>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <Link
+                      className="dropdown-item rounded-2"
+                      href={`/${locale}/signUp`}
+                      onClick={handleNavItemClick}
+                    >
+                      <i className="bi bi-person-plus me-2"></i>
+                      {t("Sign Up")}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="dropdown-item rounded-2"
+                      href={`/${locale}/login`}
+                      onClick={handleNavItemClick}
+                    >
+                      <i className="bi bi-box-arrow-in-right me-2"></i>
+                      {t("Sign In")}
+                    </Link>
+                  </li>
+                </>
+              )}
+            </ul>
+          </div>
         </div>
+
         <div className="d-flex justify-content-between align-items-center">
           <Link
             className="btn btn-sm d-none d-lg-block my-0 mx-5"
@@ -266,7 +304,7 @@ const Navbar = () => {
             </ul>
           </div>
           <div className="d-flex align-items-center justify-content-center">
-            <Link href={`/${locale}/`}>
+            <Link href={`/${locale}/`} onClick={handleNavItemClick}>
               <img
                 src={setting?.logo || "/cannata21.png"}
                 alt="Logo"

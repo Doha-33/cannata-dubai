@@ -14,7 +14,42 @@ const Footer = ({ locale, setting, services }) => {
   const { t, i18n } = useTranslation();
   const isArabic = locale === "ar";
   const router = useRouter();
-
+  const Locations = [
+    {
+      lat: 25.288306,
+      lng: 55.318263,
+      name: {
+        en: "78Q9+79C - Deira - Dubai - United Arab Emirates",
+        ar: "78Q9+79C - ديرة - دبي - الإمارات العربية المتحدة",
+      },
+    },
+    {
+      lat: 25.230326,
+      lng: 55.363081,
+      name: {
+        en: "3 7A Street - Umm Ramool - Dubai - United Arab Emirates",
+        ar: "3 7A Street - أم رمول - دبي - الإمارات العربية المتحدة",
+      },
+    },
+    {
+      lat: 24.9609375,
+      lng: 55.0633125,
+      name: {
+        en: "X367+98H - Jebel Ali - Jebel Ali Free Zone - Dubai - United Arab Emirates",
+        ar: "X367+98H - جبل علي - منطقة جبل علي الحرة - دبي - الإمارات العربية المتحدة",
+      },
+    },
+  ];
+  const locations = setting?.locations?.length
+    ? setting.locations.map((loc, index) => ({
+        lat: parseFloat(loc.latitude),
+        lng: parseFloat(loc.longitude),
+        name: {
+          en: loc?.name?.en || Locations[index]?.name.en,
+          ar: loc?.name?.ar || Locations[index]?.name.ar,
+        },
+      }))
+    : Locations;
   return (
     <footer className={`footer ${isArabic ? "rtl" : "ltr"}`}>
       <div className="container">
@@ -117,7 +152,7 @@ const Footer = ({ locale, setting, services }) => {
                     style={{ backgroundColor: "rgb(200, 35, 56)" }}
                   />
                   <div className="m-1 text-light d-flex flex-column">
-                    {setting?.locations?.map((location, index) => (
+                    {locations.map((location, index) => (
                       <span className="location" key={index}>
                         {isArabic ? location.name.ar : location.name.en}
                       </span>
@@ -168,7 +203,7 @@ const Footer = ({ locale, setting, services }) => {
                     style={{ backgroundColor: "rgb(200, 35, 56)" }}
                   />
                   <div className="m-1 text-light d-flex flex-column">
-                    {setting?.locations?.map((location, index) => (
+                    {locations.map((location, index) => (
                       <span className="location" key={index}>
                         {isArabic ? location.name.ar : location.name.en}
                       </span>

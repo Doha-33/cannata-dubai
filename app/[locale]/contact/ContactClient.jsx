@@ -11,6 +11,43 @@ import dynamic from "next/dynamic";
 // export const dynamic = "force-dynamic";
 export const revalidate = 0;
 export default function ContactClient({ setting, locale }) {
+  const Locations = [
+    {
+      lat: 25.288306,
+      lng: 55.318263,
+      name: {
+        en: "78Q9+79C - Deira - Dubai - United Arab Emirates",
+        ar: "78Q9+79C - ديرة - دبي - الإمارات العربية المتحدة",
+      },
+    },
+    {
+      lat: 25.230326,
+      lng: 55.363081,
+      name: {
+        en: "3 7A Street - Umm Ramool - Dubai - United Arab Emirates",
+        ar: "3 7A Street - أم رمول - دبي - الإمارات العربية المتحدة",
+      },
+    },
+    {
+      lat: 24.9609375,
+      lng: 55.0633125,
+      name: {
+        en: "X367+98H - Jebel Ali - Jebel Ali Free Zone - Dubai - United Arab Emirates",
+        ar: "X367+98H - جبل علي - منطقة جبل علي الحرة - دبي - الإمارات العربية المتحدة",
+      },
+    },
+  ];
+  const locations = setting?.locations?.length
+    ? setting.locations.map((loc, index) => ({
+        lat: parseFloat(loc.latitude),
+        lng: parseFloat(loc.longitude),
+        name: {
+          en: loc?.name?.en || Locations[index]?.name.en,
+          ar: loc?.name?.ar || Locations[index]?.name.ar,
+        },
+      }))
+    : Locations;
+
   const { t, i18n } = useTranslation();
   const isArabic = i18n.language === "ar";
   const MapComponent = dynamic(
@@ -82,7 +119,7 @@ export default function ContactClient({ setting, locale }) {
             <img src="/images/Frame13(1).png" style={{ width: "18%" }} alt="" />
             <h5>{t("Address")}</h5>
             <div className="m-1 text-danger d-flex flex-column">
-              {setting?.locations?.map((location, index) => (
+              {locations.map((location, index) => (
                 <span className="location" key={index}>
                   {isArabic ? location.name.ar : location.name.en}
                 </span>
@@ -200,7 +237,12 @@ export default function ContactClient({ setting, locale }) {
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.3 }}
         >
-          <img src="/images/Container.png" alt="" className="img-fluid" style={{maxHeight:"500px"}} />
+          <img
+            src="/images/Container.png"
+            alt=""
+            className="img-fluid"
+            style={{ maxHeight: "500px" }}
+          />
         </motion.div>
       </div>
     </div>

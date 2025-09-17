@@ -7,7 +7,14 @@ import "./serviceData.css";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 
-const ServiceDetails = ({ id, locale, service, allServices, faqs, setting }) => {
+const ServiceDetails = ({
+  id,
+  locale,
+  service,
+  allServices,
+  faqs,
+  setting,
+}) => {
   const { t, i18n } = useTranslation();
   const isArabic = i18n.language === "ar";
   const router = useRouter();
@@ -27,9 +34,44 @@ const ServiceDetails = ({ id, locale, service, allServices, faqs, setting }) => 
 
   const currentService = service || fallbackData;
   const currentLang = i18n.language;
-
+  const Locations = [
+    {
+      lat: 25.288306,
+      lng: 55.318263,
+      name: {
+        en: "78Q9+79C - Deira - Dubai - United Arab Emirates",
+        ar: "78Q9+79C - ديرة - دبي - الإمارات العربية المتحدة",
+      },
+    },
+    {
+      lat: 25.230326,
+      lng: 55.363081,
+      name: {
+        en: "3 7A Street - Umm Ramool - Dubai - United Arab Emirates",
+        ar: "3 7A Street - أم رمول - دبي - الإمارات العربية المتحدة",
+      },
+    },
+    {
+      lat: 24.9609375,
+      lng: 55.0633125,
+      name: {
+        en: "X367+98H - Jebel Ali - Jebel Ali Free Zone - Dubai - United Arab Emirates",
+        ar: "X367+98H - جبل علي - منطقة جبل علي الحرة - دبي - الإمارات العربية المتحدة",
+      },
+    },
+  ];
+  const locations = setting?.locations?.length
+    ? setting.locations.map((loc, index) => ({
+        lat: parseFloat(loc.latitude),
+        lng: parseFloat(loc.longitude),
+        name: {
+          en: loc?.name?.en || Locations[index]?.name.en,
+          ar: loc?.name?.ar || Locations[index]?.name.ar,
+        },
+      }))
+    : Locations;
   return (
-    <> 
+    <>
       <div
         className="con d-flex flex-wrap w-100 justify-content-center"
         dir={isArabic ? "rtl" : "ltr"}
@@ -37,16 +79,19 @@ const ServiceDetails = ({ id, locale, service, allServices, faqs, setting }) => 
         {/* Left side */}
         <div className="px-3" style={{ width: "60%" }}>
           <div className=" py-2">
-            <img
-              src={currentService.image || "/images/image11.png"}
-              alt=""
-              style={{ width: "100%", height: "auto" }}
-            />
-            <h1>
-              {currentService.title && typeof currentService.title === "object"
-                ? currentService.title[isArabic ? "ar" : "en"]
-                : fallbackData.title}
-            </h1>
+            <div className="w-100 d-flex flex-column align-items-center ">
+              <img
+                src={currentService.image || "/images/image11.png"}
+                alt=""
+                style={{ width: "50%", height: "350px", margin: "auto" }}
+              />
+              <h1>
+                {currentService.title &&
+                typeof currentService.title === "object"
+                  ? currentService.title[isArabic ? "ar" : "en"]
+                  : fallbackData.title}
+              </h1>
+            </div>
           </div>
           <p
             dangerouslySetInnerHTML={{
@@ -63,7 +108,11 @@ const ServiceDetails = ({ id, locale, service, allServices, faqs, setting }) => 
             <h2>{t("FAQs")}</h2>
 
             {faqs.map((faq, index) => (
-              <div key={faq.id} className="faq-item" style={{ marginBottom: "15px" }}>
+              <div
+                key={faq.id}
+                className="faq-item"
+                style={{ marginBottom: "15px" }}
+              >
                 <div
                   className="faq-question"
                   onClick={() => toggleFAQ(index)}
@@ -190,7 +239,7 @@ const ServiceDetails = ({ id, locale, service, allServices, faqs, setting }) => 
                   style={{ backgroundColor: "rgb(200, 35, 56)" }}
                 />
                 <div className="m-1 text-dark d-flex flex-column">
-                  {setting?.locations?.map((location, index) => (
+                  {locations.map((location, index) => (
                     <span className="location" key={index}>
                       {isArabic ? location.name.ar : location.name.en}
                     </span>

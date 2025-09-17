@@ -19,22 +19,37 @@ export default function OrdersPage() {
   const [orderLocation, setOrderLocation] = useState(null);
   const [error, setError] = useState("");
 
+  // 🟢 جلب كل أوردرات التاجر بعد تسجيل الدخول
   useEffect(() => {
-    fetchData();
+    const fetchOrders = async () => {
+      setLoading(true);
+      try {
+        const token = localStorage.getItem("Auth_Token"); // ✅ صححنا هنا
+        const res = await ApiClient.get("merchant/all-orders", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (res && res.data) {
+          setData(res.data);
+          console.log("Orders:", res.data); // ✅ شوف النتايج
+        }
+      } catch (err) {
+        console.error("Error fetching orders:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchOrders();
   }, []);
 
-  const fetchData = async () => {
-    try {
-      setLoading(true);
-      const res = await ApiClient.get("data");
-      setData(res || []);
-    } catch (err) {
-      console.error("Error fetching data:", err);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const filteredData = data.filter(
+    (o) => o.status.toLowerCase() === activeTab.toLowerCase()
+  );
 
+  // 🟢 البحث برقم الأوردر
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -46,9 +61,10 @@ export default function OrdersPage() {
 
     try {
       const res = await ApiClient.get(`orders/by-serial/${trackingId}`);
-      const foundOrder = res;
+      const foundOrder = res.data;
+      console.log("order", foundOrder);
 
-      if (!foundOrder) {
+      if (!foundOrder || !foundOrder.status) {
         setError(t("tracking.notFound"));
         setOrderLocation(null);
         return;
@@ -66,17 +82,16 @@ export default function OrdersPage() {
       setOrderLocation(null);
     }
   };
-const statusMap = {
-  pending: "Pending",
-  received: "Received",
-  confirmed: "Confirmed",
-  processing: "Processing",
-  ready_for_pickup: "Ready for Pickup",
-  out_for_delivery: "Out for Delivery",
-  delivered: "Delivered",
- 
-};
 
+  const statusMap = {
+    pending: "Pending",
+    received: "Received",
+    confirmed: "Confirmed",
+    processing: "Processing",
+    ready_for_pickup: "Ready for Pickup",
+    out_for_delivery: "Out for Delivery",
+    delivered: "Delivered",
+  };
 
   const statusTabs = [
     "Pending",
@@ -86,11 +101,7 @@ const statusMap = {
     "Ready for Pickup",
     "Out for Delivery",
     "Delivered",
-    
   ];
-
-
-  const filteredData = data.filter((o) => o.status === activeTab);
 
   const getBorderColor = () => {
     if (!trackingId) return "1px solid #ced4da";
@@ -98,12 +109,9 @@ const statusMap = {
     return "1px solid #28a745";
   };
 
-
-
   return (
     <div className="orders-container">
-    
-
+      {/* 🟢 البحث برقم التتبع */}
       <section className="tracking-section">
         <p className="tracking-title">{t("Serial Number")}</p>
         <Form className="tracking-form" onSubmit={handleSubmit}>
@@ -125,6 +133,7 @@ const statusMap = {
         {error && <p className="error-message">{error}</p>}
       </section>
 
+      {/* 🟢 Timeline لو الأوردر متجاب بالـ serial number */}
       {orderLocation && (
         <div className="timeline-box">
           <p>
@@ -133,16 +142,7 @@ const statusMap = {
           </p>
           <div className="order-status-timeline">
             {(() => {
-              const allStatuses = [
-                "pending",
-                "received",
-                "confirmed",
-                "processing",
-                "ready_for_pickup",
-                "out_for_delivery",
-                "delivered",
-               
-              ];
+              const allStatuses = Object.keys(statusMap);
               return allStatuses.map((status, index) => {
                 const isActive = status === orderLocation.status;
                 const isCompleted =
@@ -168,7 +168,7 @@ const statusMap = {
         </div>
       )}
 
- 
+      {/* 🟢 أوردرات التاجر */}
       <section className="orders-section">
         <h2 className="orders-title">MY Orders</h2>
         <div className="status-tabs">
@@ -192,32 +192,43 @@ const statusMap = {
           <div className="orders-grid">
             {filteredData.map((order) => (
               <div className="order-card" key={order.serial_number}>
+                <span className={`order-status-badge ${order.status}`}>
+                  {order.status}
+                </span>
+
                 <p>
-                  <strong>Track:</strong>{" "}
-                  {order.track || `${order.origin} → ${order.destination}`}
+                  <strong>Serial number:</strong> {order.serial_number}
                 </p>
                 <p>
                   <strong>Total Amount:</strong> {order.total_amount}
                 </p>
-                <p>
-                  <strong>Serial number:</strong> {order.serial_number}
-                </p>
 
                 <div className="parties">
                   <div className="party sender">
-                    <h4>sender</h4>
-                    <p>Name sender: {order.sender_name}</p>
-                    <p>Phone sender: {order.sender_phone}</p>
-                    <p>Address sender: {order.sender_address}</p>
-                    <p>Email sender: {order.sender_email}</p>
+                    <h4>Sender</h4>
+                    <p>Name: {order.sender.name}</p>
+                    <p>Phone: {order.sender.phone}</p>
+                    <p>Email: {order.sender.email}</p>
+                    <p>Address: {order.sender.address}</p>
                   </div>
                   <div className="party receiver">
-                    <h4>receiver</h4>
-                    <p>Name receiver: {order.receiver_name}</p>
-                    <p>Phone receiver: {order.receiver_phone}</p>
-                    <p>Delivered at: {order.delivered_at}</p>
-                    <p>Email receiver: {order.receiver_email}</p>
+                    <h4>Receiver</h4>
+                    <p>Name: {order.receiver.name}</p>
+                    <p>Phone: {order.receiver.phone}</p>
+                    <p>Email: {order.receiver.email}</p>
                   </div>
+                </div>
+
+                <div className="items">
+                  <h4>Items:</h4>
+                  <ul>
+                    {order.items.map((item) => (
+                      <li key={item.id}>
+                        {item.name} - {item.weight}kg{" "}
+                        {item.note && `(${item.note})`}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             ))}
