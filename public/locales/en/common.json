@@ -136,6 +136,9 @@
     "orderStatusTitle": "Order Status",
     "trackingId": "Tracking ID",
     "status": "Status",
-    "closeBtn": "Close"
+    "closeBtn": "Close",
+    "Welcome,":"Welcome,",
+    "Account":"Account"
+
   }
 }

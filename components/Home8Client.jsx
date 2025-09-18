@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 export const revalidate = 0;
 export default function Home8Client({ historyData, isArabic }) {
   return (
-    <div>
+    <div className="text-center">
       <motion.h2
         className="pt-5"
         initial={{ opacity: 0, y: 50 }}

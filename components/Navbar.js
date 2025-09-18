@@ -77,7 +77,7 @@ const Navbar = () => {
               aria-expanded="false"
             >
               <IoPersonCircleOutline size={26} className="m-2" />
-              <span>{authToken ? userName : t("Account")}</span>
+              <span>{authToken ? `${t("Welcome,")} ${userName}`  : t("Acount")}</span>
             </button>
 
             <ul className="dropdown-menu dropdown-menu-end shadow-sm border-0 rounded-3 p-2">

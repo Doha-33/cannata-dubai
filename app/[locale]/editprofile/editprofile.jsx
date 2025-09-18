@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import ApiClient from "@/Services/APIs";
 import "./editprofile.css";
+
 const EditProfile = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -11,6 +12,8 @@ const EditProfile = () => {
     phone: "",
     company: "",
     address: "",
+    password: "",
+    password_confirmation: "",
   });
 
   useEffect(() => {
@@ -19,6 +22,7 @@ const EditProfile = () => {
         const res = await ApiClient.get("merchant/me");
         if (res?.data) {
           setProfileData({
+            ...profileData,
             name: res.data.name || "",
             email: res.data.email || "",
             phone: res.data.phone || "",
@@ -32,19 +36,38 @@ const EditProfile = () => {
         setLoading(false);
       }
     };
-
     fetchProfile();
   }, []);
 
+  const validateEmail = (email) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  };
+
   const handleSaveClick = async () => {
+    if (!validateEmail(profileData.email)) {
+      alert("❌ البريد الإلكتروني غير صحيح");
+      return;
+    }
+
     try {
-      const res = await ApiClient.post("merchant/profile", profileData); // لو محتاج PUT بدال POST عدلي هنا
+      const dataToSend = { ...profileData };
+      if (!dataToSend.password) delete dataToSend.password;
+      if (!dataToSend.password_confirmation)
+        delete dataToSend.password_confirmation;
+
+      const res = await ApiClient.put("merchant/profile", dataToSend);
       console.log("✅ Profile updated:", res);
       setIsEditing(false);
+      setProfileData({
+        ...profileData,
+        password: "",
+        password_confirmation: "",
+      });
       alert("تم حفظ التغييرات بنجاح!");
     } catch (err) {
       console.error("❌ Error updating profile:", err);
-      alert("حصل خطأ أثناء حفظ التغييرات");
+      alert(err?.response?.data?.message || "حصل خطأ أثناء حفظ التغييرات");
     }
   };
 
@@ -57,7 +80,6 @@ const EditProfile = () => {
           <div className="profile-section">
             <div className="profile-header">
               <h2>{profileData.name}</h2>
-              <p>{profileData.email}</p>
               <button
                 className={isEditing ? "save-btn" : "edit-btn"}
                 onClick={isEditing ? handleSaveClick : () => setIsEditing(true)}
@@ -77,6 +99,21 @@ const EditProfile = () => {
                     setProfileData({ ...profileData, name: e.target.value })
                   }
                   disabled={!isEditing}
+                  className={isEditing ? "editable" : ""}
+                />
+              </div>
+              <div className="form-group">
+                <label>Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={profileData.email}
+                  onChange={(e) =>
+                    setProfileData({ ...profileData, email: e.target.value })
+                  }
+                  disabled={!isEditing}
+                  className={isEditing ? "editable" : ""}
+                  placeholder="ادخل ايميل جديد"
                 />
               </div>
 
@@ -90,6 +127,7 @@ const EditProfile = () => {
                     setProfileData({ ...profileData, phone: e.target.value })
                   }
                   disabled={!isEditing}
+                  className={isEditing ? "editable" : ""}
                 />
               </div>
 
@@ -103,6 +141,7 @@ const EditProfile = () => {
                     setProfileData({ ...profileData, company: e.target.value })
                   }
                   disabled={!isEditing}
+                  className={isEditing ? "editable" : ""}
                 />
               </div>
 
@@ -116,8 +155,47 @@ const EditProfile = () => {
                     setProfileData({ ...profileData, address: e.target.value })
                   }
                   disabled={!isEditing}
+                  className={isEditing ? "editable" : ""}
                 />
               </div>
+
+              {isEditing && (
+                <>
+                  <div className="form-group">
+                    <label>Password</label>
+                    <input
+                      type="password"
+                      name="password"
+                      value={profileData.password}
+                      onChange={(e) =>
+                        setProfileData({
+                          ...profileData,
+                          password: e.target.value,
+                        })
+                      }
+                      className="editable"
+                      placeholder="ادخلي كلمة السر الجديدة"
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label>Confirm Password</label>
+                    <input
+                      type="password"
+                      name="password_confirmation"
+                      value={profileData.password_confirmation}
+                      onChange={(e) =>
+                        setProfileData({
+                          ...profileData,
+                          password_confirmation: e.target.value,
+                        })
+                      }
+                      className="editable"
+                      placeholder="تأكيد كلمة السر"
+                    />
+                  </div>
+                </>
+              )}
             </div>
 
             {isEditing && (
