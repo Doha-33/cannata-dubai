@@ -2,6 +2,49 @@ import PageServerHeader from "@/components/PageHeaderServer";
 import { getAPI } from "../../../../Services/APIs";
 import "./blogDetails.css";
 
+// 🟢 دالة تجيب البوست المطلوب بالـ slug
+async function getPost(slug) {
+  const res = await getAPI("article");
+  const posts = res?.data?.data || [];
+  return posts.find((post) => post.slug === slug);
+}
+
+// 🟢 هنا بنولّد الميتا داتا
+export async function generateMetadata({ params }) {
+  const { slug, locale } = params;
+  const isArabic = locale === "ar";
+
+  const post = await getPost(slug);
+  if (!post) {
+    return {
+      title: isArabic ? "لم يتم العثور على المقال" : "Post not found",
+    };
+  }
+
+  return {
+    title: post.seo.meta_title?.[isArabic ? "ar" : "en"] || post.title?.[isArabic ? "ar" : "en"],
+    description: post.seo.meta_description?.[isArabic ? "ar" : "en"] || post.content?.[isArabic ? "ar" : "en"]?.slice(0, 150),
+    keywords: post.seo.meta_keywords?.[isArabic ? "ar" : "en"] || "",
+    openGraph: {
+      title: post.seo.meta_title?.[isArabic ? "ar" : "en"] || post.title?.[isArabic ? "ar" : "en"],
+      description: post.seo.meta_description?.[isArabic ? "ar" : "en"],
+      images: post.image ? [{ url: post.image, alt: post.image_alt || "" }] : [],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.seo.meta_title?.[isArabic ? "ar" : "en"],
+      description: post.seo.meta_description?.[isArabic ? "ar" : "en"],
+      images: post.seo.og_image ? [post.image] : [],
+    },
+    robots: {
+      index: true, 
+      follow: true,
+      nocache: false,
+    },
+  };
+}
+
+// 🟢 صفحة التفاصيل
 const BlogDetailsPage = async ({ params }) => {
   const { slug, locale } = params;
   const isArabic = locale === "ar";

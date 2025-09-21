@@ -57,6 +57,11 @@ export async function generateMetadata({ params }) {
     other: {
       keywords: seo.keywords,
     },
+    robots: {
+      index: true, 
+      follow: true,
+      nocache: false,
+    },
   };
 }
 

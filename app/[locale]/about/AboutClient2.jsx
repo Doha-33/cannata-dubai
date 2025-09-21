@@ -25,9 +25,9 @@ export default function AboutClient2({ about, locale }) {
           transition={{ duration: 0.8 }}
           viewport={{ once: true, amount: 0.5 }}
         >
-          <h1 className="py-3" style={{ color: "black" }}>
+          <h2 className="py-3" style={{ color: "black" }}>
             {t("OUR MISSION")}
-          </h1>
+          </h2>
           <div
             dangerouslySetInnerHTML={{
               __html: about?.mission?.[isArabic ? "ar" : "en"] || "",
@@ -68,9 +68,9 @@ export default function AboutClient2({ about, locale }) {
           transition={{ duration: 0.8 }}
           viewport={{ once: true, amount: 0.5 }}
         >
-          <h1 className="py-3" style={{ color: "black" }}>
+          <h2 className="py-3" style={{ color: "black" }}>
             {t("OUR VISION")}
-          </h1>
+          </h2>
           <div
             dangerouslySetInnerHTML={{
               __html: about?.vision?.[isArabic ? "ar" : "en"] || "",

@@ -65,6 +65,11 @@ export async function generateMetadata({ params }) {
         type: "website",
       },
     },
+    robots: {
+      index: true, 
+      follow: true,
+      nocache: false,
+    },
   };
 }
 

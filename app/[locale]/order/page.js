@@ -3,7 +3,7 @@ import seoConfig from "@/config/seoConfig";
 
 export async function generateMetadata({ params }) {
   const locale = params.locale;
-  const seo = seoConfig.tracking[locale] || seoConfig.tracking.en;
+  const seo = seoConfig.orders[locale] || seoConfig.orders.en;
 
   return {
     title: seo.title,
@@ -11,8 +11,8 @@ export async function generateMetadata({ params }) {
     keywords: seo.keywords,
     alternates: {
       languages: {
-        en: seoConfig.tracking.en.url,
-        ar: seoConfig.tracking.ar.url,
+        en: seoConfig.orders.en.url,
+        ar: seoConfig.orders.ar.url,
       },
     },
     openGraph: {
@@ -22,6 +22,11 @@ export async function generateMetadata({ params }) {
       siteName: "Cannata",
       locale: locale === "ar" ? "ar_EG" : "en_US",
       type: "website",
+    },
+    robots: {
+      index: true, 
+      follow: true,
+      nocache: false,
     },
   };
 }

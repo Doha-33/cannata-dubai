@@ -82,15 +82,15 @@ const ServiceDetails = ({
             <div className="w-100 d-flex flex-column align-items-center ">
               <img
                 src={currentService.image || "/images/image11.png"}
-                alt=""
+                alt={currentService.image_alt}
                 style={{ width: "50%", height: "350px", margin: "auto" }}
               />
-              <h1>
+              <h2>
                 {currentService.title &&
                 typeof currentService.title === "object"
                   ? currentService.title[isArabic ? "ar" : "en"]
                   : fallbackData.title}
-              </h1>
+              </h2>
             </div>
           </div>
           <p

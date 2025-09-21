@@ -10,5 +10,5 @@ export default function RootPage() {
     router.replace("/en");
   }, [router]);
 
-  return null; // مفيش محتوى هنا، بس redirect
+  return null;
 }

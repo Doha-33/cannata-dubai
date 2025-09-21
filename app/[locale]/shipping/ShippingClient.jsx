@@ -148,9 +148,9 @@ const ShippingClient = ({ trackOptions, prams }) => {
   return (
     <div className="ship my-5" dir={isArabic ? "rtl" : "ltr"}>
       <div className="div22">
-        <h1 style={{ textAlign: "center", padding: "2%", color: "white" }}>
+        <h2 style={{ textAlign: "center", padding: "2%", color: "white" }}>
           {t("Shipping Booking")}
-        </h1>
+        </h2>
 
         <Form onSubmit={handleSubmit(onSubmit)}>
           {/* Track Select */}
