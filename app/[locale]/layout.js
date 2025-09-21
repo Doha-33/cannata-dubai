@@ -36,15 +36,30 @@ export default async function LocaleLayout({ children, params }) {
           sizes="16x16"
           href="/images/cannata21.png"
         />
+        {/* Google Analytics */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-8NBGFC7Q47');
+            `,
+          }}
+        />
       </head>
       <body>
         <Navbar />
         <div>
           {children}
 
-            <ChatWidget />
-            
-            <WhatsAppButton />
+          <ChatWidget />
+
+          <WhatsAppButton />
         </div>
         <Footer locale={locale} />
       </body>

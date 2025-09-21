@@ -19,7 +19,7 @@ const seoConfig = {
   home: {
     en: {
       title:
-        "Global Shipping & Logistics Services UAE | Cannata - Fast Worldwide Delivery",
+        "Global Shipping & Logistics UAE | Cannata Delivery",
       description:
         "Leading shipping company in UAE offering global logistics, customs clearance & cargo services. 24/7 tracking, competitive rates. Get your free quote today!",
       keywords:
@@ -91,7 +91,7 @@ const seoConfig = {
     },
     ar: {
       title:
-        "خدمات الشحن والخدمات اللوجستية العالمية الإمارات | كاناتا - توصيل سريع عالمياً",
+        "الشحن العالمي واللوجستيات الإمارات العربية المتحدة | توصيل كاناتا",
       description:
         "شركة شحن رائدة في الإمارات تقدم خدمات لوجستية عالمية وتخليص جمركي وخدمات شحن البضائع. تتبع على مدار الساعة وأسعار تنافسية. احصل على عرض أسعار مجاني اليوم!",
       keywords:

@@ -20,9 +20,9 @@ const Home2 = ({ about }) => {
           transition={{ duration: 1.5 }}
           viewport={{ once: true, amount: 0.3 }}
         >
-          <h2 className="mb-5" style={{ direction: isArabic ? "rtl" : "ltr" }}>
+          <h1 className="mb-5" style={{ direction: isArabic ? "rtl" : "ltr" }}>
             {t("ABOUT COMPANY")}
-          </h2>
+          </h1>
           <div
             dangerouslySetInnerHTML={{
               __html: about?.about[isArabic ? "ar" : "en"] || "",
@@ -31,11 +31,11 @@ const Home2 = ({ about }) => {
 
           <div className="d-flex px-2 flex-lg-row">
             <div className="about d-flex flex-column justify-content-center align-items-center  px-2">
-              <img src="/images/Frame20.png" alt="" />
-              <img src="/images/Frame27.png" alt="" />
-              <img src="/images/Frame23.png" alt="" />
-              <img src="/images/Frame27.png" alt="" />
-              <img src="/images/Frame30.png" alt="" />
+              <img src="/images/Frame20.png" alt="icon1" />
+              <img src="/images/Frame27.png" alt="frame" />
+              <img src="/images/Frame23.png" alt="icon2" />
+              <img src="/images/Frame27.png" alt="frame" />
+              <img src="/images/Frame30.png" alt="icon3" />
             </div>
             <div className="py-4 px-2">
               <div className="pb-lg-3 pb-1">
@@ -95,7 +95,7 @@ const Home2 = ({ about }) => {
             <img
               className="Jun-img"
               src="/images/ChatGPTImageJun.png"
-              alt=""
+              alt="contact-img"
               style={{
                 position: "absolute",
                 [isArabic ? "right" : "left"]: "25%",

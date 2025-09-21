@@ -97,17 +97,14 @@ const MapComponent = () => {
           margin: "auto",
         }}
       >
+        {/* ✅ English-only Carto Light tiles */}
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>'
+          url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
         />
 
         {locations.map((loc, idx) => (
-          <Marker
-            key={idx}
-            position={[loc.lat, loc.lng]}
-            icon={customIcon}
-          >
+          <Marker key={idx} position={[loc.lat, loc.lng]} icon={customIcon}>
             <Popup>{isArabic ? loc.name.ar : loc.name.en}</Popup>
           </Marker>
         ))}
