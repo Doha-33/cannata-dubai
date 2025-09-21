@@ -33,7 +33,7 @@ export default function OrdersPage() {
 
         if (res && res.data) {
           setData(res.data);
-          console.log("Orders:", res.data); // ✅ شوف النتايج
+          // console.log("Orders:", res.data); // ✅ شوف النتايج
         }
       } catch (err) {
         console.error("Error fetching orders:", err);
@@ -62,7 +62,7 @@ export default function OrdersPage() {
     try {
       const res = await ApiClient.get(`orders/by-serial/${trackingId}`);
       const foundOrder = res.data;
-      console.log("order", foundOrder);
+      // console.log("order", foundOrder);
 
       if (!foundOrder || !foundOrder.status) {
         setError(t("tracking.notFound"));

@@ -7,7 +7,7 @@ export default function PageHeader({ titleKey, img }) {
   
   
   const { t } = useTranslation();
-  console.log("titlekey",titleKey);
+  // console.log("titlekey",titleKey);
   
   return (
     <div className="serv" style={{backgroundImage: `url(${img})`}}>

@@ -18,7 +18,7 @@ class ApiClient {
       return this.cache[url];
     }
 
-    console.log("🌐 GET Fetching:", url);
+    // console.log("🌐 GET Fetching:", url);
     try {
       const res = await axiosInstance.get(url);
       if (useCache) this.cache[url] = res.data;
@@ -54,7 +54,7 @@ class ApiClient {
           ...(auth && { Authorization: `Bearer ${auth}` }),
         },
       });
-      console.log("🗑 DELETE Success:", res.data);
+      // console.log("🗑 DELETE Success:", res.data);
       return res.data;
     } catch (error) {
       console.error("❌ DELETE Error:", error.response || error);
@@ -72,7 +72,7 @@ class ApiClient {
           ...(auth && { Authorization: `Bearer ${auth}` }),
         },
       });
-      console.log(`📩 ${method.toUpperCase()} Success:`, res.data);
+      // console.log(`📩 ${method.toUpperCase()} Success:`, res.data);
       return res.data;
     } catch (error) {
       console.error(`❌ ${method.toUpperCase()} Error:`, error.response || error);

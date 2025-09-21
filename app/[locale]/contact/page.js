@@ -69,7 +69,7 @@ export default async function ContactServer({ locale }) {
   try {
     const res = await ApiClient.get("setting");
     setting = res?.data;
-    console.log("Settings data:", setting);
+    // console.log("Settings data:", setting);
   } catch (error) {
     console.error("Error fetching settings:", error);
   }

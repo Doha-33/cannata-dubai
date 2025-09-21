@@ -129,7 +129,7 @@ const ShippingClient = ({ trackOptions, prams }) => {
         },
       });
 
-      console.log("✅ Order Submitted:", res.data);
+      // console.log("✅ Order Submitted:", res.data);
       setModalType("success");
       setModalMsg(t("Your order has been submitted successfully ✅"));
       setShowModal(true);
