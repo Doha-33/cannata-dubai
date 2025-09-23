@@ -34,7 +34,7 @@ export default function Home5Client({ isArabic, testimonials }) {
             <div style={{ width: "100%", textAlign: "center" }}>
               <img
                 src={item.image}
-                alt={item.title ? item.title[isArabic ? "ar" : "en"] : ""}
+                alt={item.title ? item.title[isArabic ? "ar" : "en"] : "Testimonials"}
                 style={{
                   width: "100px",
                   height: "100px",

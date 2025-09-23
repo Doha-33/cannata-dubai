@@ -60,10 +60,6 @@ ul{
 	margin:0 23px 10px 0;
 	transition: all 0.5s ease;
 }
-.footer-col .social-links a:hover{
-	height: 45px;
-    width: 45px;
-}
 
 @media(max-width: 767px) {
   .footer-col {
@@ -98,4 +94,12 @@ ul{
 .footer.ltr {
   direction: ltr;
   text-align: left;
+}
+
+.social-links a{
+	font-size: 20px;
+	color: white;
+	background-color: rgb(200, 35, 56);
+	border-radius: 50%;
+	text-align: center;
 }

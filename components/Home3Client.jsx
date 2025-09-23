@@ -120,7 +120,7 @@ export default function Home3Client({ locale, services }) {
                 }}
               >
                 <div className="icon">
-                  <img src={item.icon} alt="" />
+                  <img src={item.icon} alt="icon" />
                 </div>
                 <div className="service-border"></div>
 

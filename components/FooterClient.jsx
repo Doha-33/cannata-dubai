@@ -3,10 +3,9 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import "./Footer.css";
 import { FiPhoneCall } from "react-icons/fi";
-import { FaLocationDot } from "react-icons/fa6";
+import { FaLocationDot, FaYoutube } from "react-icons/fa6";
 import { FaFacebook } from "react-icons/fa";
-import { AiFillInstagram, AiFillTikTok } from "react-icons/ai";
-import { FaLinkedin } from "react-icons/fa";
+import { AiFillInstagram, AiFillTwitterCircle } from "react-icons/ai";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
@@ -14,6 +13,19 @@ const Footer = ({ locale, setting, services }) => {
   const { t, i18n } = useTranslation();
   const isArabic = locale === "ar";
   const router = useRouter();
+
+  const socials = [
+    {
+      icon: <FaFacebook />,
+      url: setting.facebook ||"https://www.facebook.com",
+    },
+    { icon: <AiFillInstagram />, url: setting.instagram ||"https://www.instagram.com/cannata_cargo_services/" },
+    { icon: <AiFillTwitterCircle />, url: setting.twitter || "https://x.com/CannataCargoUAE" },
+    {
+      icon: <FaYoutube />,
+      url: setting.youtube ||"https://www.linkedin.com/company/cannata-world-wide-cargo-services/",
+    },
+  ];
   const Locations = [
     {
       lat: 25.288306,
@@ -60,18 +72,11 @@ const Footer = ({ locale, setting, services }) => {
               <div className="footer-col pb-5">
                 <h4>{t("Follow Us:")}</h4>
                 <div className="social-links">
-                  <a href="https://www.facebook.com/share/1D3G7KnrB5/?mibextid=wwXIfr">
-                    <FaFacebook size={"35px"} color="rgb(200, 35, 56)" />
-                  </a>
-                  <a href="https://www.instagram.com/cannata.ar?igsh=MW50NDA4cDhlY2pvcA%3D%3D&utm_source=qr">
-                    <AiFillInstagram size={"35px"} color="rgb(200, 35, 56)" />
-                  </a>
-                  <a href="https://www.tiktok.com/@cannata.ar?_t=ZS-8y9oNFZ9HGb&_r=1">
-                    <AiFillTikTok size={"35px"} color="rgb(200, 35, 56)" />
-                  </a>
-                  <a href="https://www.linkedin.com/company/cannata-world-wide-cargo-services/">
-                    <FaLinkedin size={"35px"} color="rgb(200, 35, 56)" />
-                  </a>
+                  {socials.map((s, i) => (
+                    <a href={s.url} key={i} target="_blank" rel="noreferrer">
+                      {s.icon}
+                    </a>
+                  ))}
                 </div>
               </div>
 
@@ -253,18 +258,11 @@ const Footer = ({ locale, setting, services }) => {
               <div className="footer-col pb-5">
                 <h4>{t("Follow Us:")}</h4>
                 <div className="social-links">
-                  <a href="https://www.facebook.com/share/1D3G7KnrB5/?mibextid=wwXIfr">
-                    <FaFacebook size={"35px"} color="rgb(200, 35, 56)" />
-                  </a>
-                  <a href="https://www.instagram.com/cannata.ar?igsh=MW50NDA4cDhlY2pvcA%3D%3D&utm_source=qr">
-                    <AiFillInstagram size={"35px"} color="rgb(200, 35, 56)" />
-                  </a>
-                  <a href="https://www.tiktok.com/@cannata.ar?_t=ZS-8y9oNFZ9HGb&_r=1">
-                    <AiFillTikTok size={"35px"} color="rgb(200, 35, 56)" />
-                  </a>
-                  <a href="https://www.linkedin.com/company/cannata-world-wide-cargo-services/">
-                    <FaLinkedin size={"35px"} color="rgb(200, 35, 56)" />
-                  </a>
+                  {socials.map((s, i) => (
+                    <a href={s.url} key={i} target="_blank" rel="noreferrer">
+                      {s.icon}
+                    </a>
+                  ))}
                 </div>
               </div>
             </>

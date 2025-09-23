@@ -32,7 +32,7 @@ export default function Home4Client({ isArabic, items }) {
           >
             <img
               src={item.image}
-              alt={item.name ? item.name[isArabic ? "ar" : "en"] : ""}
+              alt={item.name ? item.name[isArabic ? "ar" : "en"] : "why"}
               style={{ width: "80px", height: "80px", objectFit: "contain" }}
             />
             <h4>{item.name ? item.name[isArabic ? "ar" : "en"] : ""}</h4>

@@ -17,6 +17,7 @@ const customIcon = new L.Icon({
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
   shadowSize: [41, 41],
+  className: "marker-icon", // علشان نستهدفها بسهولة
 });
 
 // خليه هو الـ default
@@ -82,6 +83,18 @@ const MapComponent = () => {
 
     fetchLocations();
   }, []);
+
+  // ✅ إضافة alt attribute تلقائيًا بعد ما الماركرز تتعمل
+  useEffect(() => {
+    const imgs = document.querySelectorAll(
+      ".leaflet-marker-icon, .leaflet-marker-shadow"
+    );
+    imgs.forEach((img) => {
+      if (!img.getAttribute("alt")) {
+        img.setAttribute("alt", "Cannata location marker on map");
+      }
+    });
+  }, [locations]);
 
   return (
     <div style={{ width: "100%" }}>
