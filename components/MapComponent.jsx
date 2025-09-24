@@ -17,10 +17,10 @@ const customIcon = new L.Icon({
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
   shadowSize: [41, 41],
-  className: "marker-icon", // علشان نستهدفها بسهولة
+  className: "marker-icon",
 });
 
-// خليه هو الـ default
+// ✅ خلي ده الديفولت
 L.Marker.prototype.options.icon = customIcon;
 
 const MapComponent = () => {
@@ -29,7 +29,7 @@ const MapComponent = () => {
 
   const [locations, setLocations] = useState([]);
 
-  // locations الافتراضية
+  // ✅ لو السيرفر مردش، fallback للـ default
   const defaultLocations = [
     {
       lat: 25.288306,
@@ -84,14 +84,23 @@ const MapComponent = () => {
     fetchLocations();
   }, []);
 
-  // ✅ إضافة alt attribute تلقائيًا بعد ما الماركرز تتعمل
+  // ✅ بعد تحميل الماب، أضف alt للـ markers + tiles
   useEffect(() => {
+    // markers + shadows
     const imgs = document.querySelectorAll(
       ".leaflet-marker-icon, .leaflet-marker-shadow"
     );
     imgs.forEach((img) => {
       if (!img.getAttribute("alt")) {
         img.setAttribute("alt", "Cannata location marker on map");
+      }
+    });
+
+    // tiles
+    const tiles = document.querySelectorAll(".leaflet-tile");
+    tiles.forEach((tile) => {
+      if (!tile.getAttribute("alt")) {
+        tile.setAttribute("alt", "Dubai map tile - Cannata logistics");
       }
     });
   }, [locations]);

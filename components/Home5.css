@@ -38,7 +38,7 @@
     overflow-x: auto;          
     scroll-snap-type: x mandatory; 
     -webkit-overflow-scrolling: touch;
-    justify-content: start; 
+    justify-content: flex-start; 
     gap: 16px;       
     padding: 10px 0;
   }
