@@ -57,7 +57,7 @@ const seoConfig = {
         description:
           "Leading global shipping and logistics company based in UAE",
         url: "https://cannata.ae",
-        logo: "https://cannata.ae/images/cannata-logo.png",
+        logo: "https://cannata.ae/images/cannata21.png",
         address: {
           "@type": "PostalAddress",
           addressCountry: "AE",

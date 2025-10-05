@@ -31,11 +31,11 @@ const Home2 = ({ about }) => {
 
           <div className="d-flex px-2 flex-lg-row">
             <div className="about d-flex flex-column justify-content-center align-items-center  px-2">
-              <img src="/images/Frame20.png" alt="icon1" />
-              <img src="/images/Frame27.png" alt="frame" />
-              <img src="/images/Frame23.png" alt="icon2" />
-              <img src="/images/Frame27.png" alt="frame" />
-              <img src="/images/Frame30.png" alt="icon3" />
+              <img src="/images/Frame20.png" loading="lazy" alt="icon1" />
+              <img src="/images/Frame27.png" loading="lazy" alt="frame" />
+              <img src="/images/Frame23.png" loading="lazy" alt="icon2" />
+              <img src="/images/Frame27.png" loading="lazy" alt="frame" />
+              <img src="/images/Frame30.png" loading="lazy" alt="icon3" />
             </div>
             <div className="py-4 px-2">
               <div className="pb-lg-3 pb-1">
@@ -51,10 +51,10 @@ const Home2 = ({ about }) => {
                 </p>
               </div>
               <div className="pb-lg-3 pb-1">
-                <h5>{t("DOOR-TO-DOOR SERVICES")}</h5>
+                <h5>{t("SEA FREIGHT")}</h5>
                 <p>
                   {t(
-                    "COMPREHENSIVE HANDLING FROM ORIGIN TO FINAL DESTINATION."
+                    "Fast and reliable sea freight from Dubai to Africa and worldwide — safe, efficient, and cost-effective."
                   )}
                 </p>
               </div>
@@ -96,6 +96,7 @@ const Home2 = ({ about }) => {
               className="Jun-img"
               src="/images/ChatGPTImageJun.png"
               alt="contact-img"
+              loading="lazy"
               style={{
                 position: "absolute",
                 [isArabic ? "right" : "left"]: "25%",

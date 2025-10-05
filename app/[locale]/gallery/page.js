@@ -81,7 +81,7 @@ export default async function Gallery({ params }) {
       <PageServerHeader titleKey="gallary" />
       <div className="gallery my-5">
         {images.map((item, index) => (
-          <img key={index} src={item.image} alt={`gallery-${index}`} />
+          <img key={index} loading="lazy" src={item.image} alt={`gallery-${index}`} />
         ))}
       </div>
     </>

@@ -109,7 +109,7 @@ export default function Home3Client({ locale, services }) {
               }}
               whileTap={{ scale: 0.98 }}
             >
-              <img className="img1" src={item.image} alt={item.image_alt} />
+              <img className="img1" loading="lazy" src={item.image} alt={item.image_alt} />
               <div
                 style={{
                   position: "relative",
@@ -120,7 +120,7 @@ export default function Home3Client({ locale, services }) {
                 }}
               >
                 <div className="icon">
-                  <img src={item.icon} alt="icon" />
+                  <img src={item.icon} loading="lazy" alt="icon" />
                 </div>
                 <div className="service-border"></div>
 

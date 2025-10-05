@@ -1,13 +1,13 @@
 {
   "language": "English",
   "signin": "Sign In",
-  "home": "Home",
-  "blog": "Blogs",
+  "Home": "Home",
+  "Blogs": "Blogs",
   "Tracking": "Tracking",
-  "shipping": "Shipping Request",
-  "about": "About Us",
-  "service": "Services",
-  "contact": "Contact Us",
+  "Shipping": "Shipping Request",
+  "About": "About Us",
+  "Service": "Services",
+  "Contact Us": "Contact Us",
   "change_language": "Language",
   "Fast and Secure Shipping Services": "Fast and Secure Shipping Services",
   "Reliable delivery solutions for businesses and individuals worldwide": "Reliable delivery solutions for businesses and individuals worldwide",
@@ -56,7 +56,7 @@
   "Privacy Policy": "Privacy Policy",
   "Refund and Returns Policy": "Refund and Returns Policy",
   "get help": "Get Help",
-  "shipping_": "Shipping",
+  "Shipping_": "Shipping",
   "Follow Us:": "Follow Us:",
   "online shop": "Online Shop",
   "Company Name": "Company Name",
@@ -82,7 +82,7 @@
   "OUR STRATEGICALLY LOCATED WAREHOUSES IN DUBAI OFFER SECURE STORAGE AND EFFICIENT INVENTORY MANAGEMENT SOLUTIONS. WE PROVIDE VALUE-ADDED SERVICES SUCH AS PACKING, LABELING, AND ORDER FULFILLMENT TO STREAMLINE SUPPLY CHAINS.": "OUR STRATEGICALLY LOCATED WAREHOUSES IN DUBAI OFFER SECURE STORAGE AND EFFICIENT INVENTORY MANAGEMENT SOLUTIONS. WE PROVIDE VALUE-ADDED SERVICES SUCH AS PACKING, LABELING, AND ORDER FULFILLMENT TO STREAMLINE SUPPLY CHAINS.",
   "CUSTOMS CLEARANCE & DOCUMENTATION": "CUSTOMS CLEARANCE & DOCUMENTATION",
   "WAREHOUSING & DISTRIBUTION": "WAREHOUSING & DISTRIBUTION",
-  "gallary":"Gallery",
+  "Gallery":"Gallery",
   "Custom Clearnace":"Custom Clearnace",
   "Shipping Booking": "Shipping Booking",
     "Track Name": "Track Name",
@@ -127,7 +127,7 @@
     "Invalid email": "Invalid email",
     "tracking": {
     "title": "Tracking",
-    "home": "Home",
+    "Home": "Home",
     "trackYourOrder": "Track your Order",
     "placeholder": "Enter your Tracking ID",
     "trackOrderBtn": "Track Order",
@@ -138,7 +138,8 @@
     "status": "Status",
     "closeBtn": "Close",
     "Welcome,":"Welcome,",
-    "Account":"Account"
+    "Account":"Account",
+    "Fast and reliable sea freight from Dubai to Africa and worldwide — safe, efficient, and cost-effective.":"Fast and reliable sea freight from Dubai to Africa and worldwide — safe, efficient, and cost-effective."
 
   }
 }

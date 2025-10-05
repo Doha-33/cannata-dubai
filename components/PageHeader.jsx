@@ -14,7 +14,7 @@ export default function PageHeader({ titleKey, img }) {
       <div className="container">
         <h1>{t(titleKey)}</h1>
         <p>
-          {t("home")} / {t(titleKey)}
+          {t("Home")} / {t(titleKey)}
         </p>
       </div>
     </div>

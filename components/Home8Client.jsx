@@ -30,6 +30,7 @@ export default function Home8Client({ historyData, isArabic }) {
             <div className="timeline__event__icon">
               <img
                 className="timeline__event__image"
+                loading="lazy"
                 src={item.image}
                 alt="history"
               />

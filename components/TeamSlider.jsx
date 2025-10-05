@@ -17,6 +17,7 @@ export default function TeamSlider({ team, locale }) {
             <div className="swiper-button-prevs">
               <img
                 className="arrow-left"
+                loading="lazy"
                 src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/Path.svg"
                 alt="left-arrow"
               />
@@ -24,6 +25,7 @@ export default function TeamSlider({ team, locale }) {
             <div className="swiper-button-nexts">
               <img
                 className="arrow-right"
+                loading="lazy"
                 src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/Path.svg"
                 alt="right-arrow"
               />
@@ -34,6 +36,7 @@ export default function TeamSlider({ team, locale }) {
             <div className="swiper-button-nexts">
               <img
                 className="arrow-right"
+                loading="lazy"
                 src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/Path.svg"
                 alt="right-arrow"
               />
@@ -41,6 +44,7 @@ export default function TeamSlider({ team, locale }) {
             <div className="swiper-button-prevs">
               <img
                 className="arrow-left"
+                loading="lazy"
                 src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/Path.svg"
                 alt="left-arrow"
               />
@@ -72,6 +76,7 @@ export default function TeamSlider({ team, locale }) {
             <div className="card mb-3">
               <img
                 className="team-member-image"
+                loading="lazy"
                 src={item.image}
                 alt="team-member"
               />

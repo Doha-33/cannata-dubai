@@ -63,7 +63,7 @@ export default function SliderClient({ slides}) {
                 key={slide.id}
                 dir={isArabic ? "rtl" : "ltr"}
               >
-                <img src={slide.image} alt={slide.image_alt || "slide"} />
+                <img loading="lazy" src={slide.image} alt={slide.image_alt || "slide"} />
                 <div className="content">
                   <h2 className="title">
                     {isArabic ? slide.title.ar : slide.title.en}
@@ -87,7 +87,7 @@ export default function SliderClient({ slides}) {
           (slide) =>
             slide && (
               <div className="item" key={slide.id}>
-                <img src={slide.image} alt={slide.image_alt || "thumb"} />
+                <img loading="lazy" src={slide.image} alt={slide.image_alt || "thumb"} />
               </div>
             )
         )}

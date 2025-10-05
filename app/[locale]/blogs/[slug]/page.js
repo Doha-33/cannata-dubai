@@ -72,6 +72,7 @@ const BlogDetailsPage = async ({ params }) => {
           <img
             src={post.image}
             alt={post.image_alt}
+            loading="lazy"
             className="blog-main-img"
           />
           <h2 className="blog-title">{post.title[isArabic ? "ar" : "en"]}</h2>
@@ -91,6 +92,7 @@ const BlogDetailsPage = async ({ params }) => {
               {blog.image && (
                 <img
                   src={blog.image}
+                  loading="lazy"
                   alt={blog.image_alt || ""}
                   className="sidebar-img"
                 />

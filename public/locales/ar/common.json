@@ -1,13 +1,13 @@
 {
   "language": "العربية",
   "signin": "تسجيل الدخول",
-  "home": "الصحفة الرئيسية",
-  "blog": "المدونات",
+  "Home": "الصحفة الرئيسية",
+  "Blogs": "المدونات",
   "Tracking": "التتبع",
-  "shipping": "طلب الشحن",
-  "about": "من نحن",
-  "service": "خدمات",
-  "contact": "اتصل بنا",
+  "Shipping": "طلب الشحن",
+  "About": "من نحن",
+  "Service": "خدمات",
+  "Contact Us": "اتصل بنا",
   "change_language": " اللغة",
   "Fast and Secure Shipping Services": "خدمات شحن سريعة وآمنة",
   "Reliable delivery solutions for businesses and individuals worldwide": "حلول توصيل موثوقة للأعمال والأفراد في جميع أنحاء العالم",
@@ -94,7 +94,7 @@
   "CONTACT INFO": "معلومات الاتصال",
   "Description:": "الوصف:",
   "Sudan Web Site": "موقع السودان الإلكتروني",
-  "gallary": "المعرض",
+  "Gallery": "المعرض",
   "Custom Clearnace": "التخليص الجمركي",
   "Shipping Booking": "حجز شحن",
   "Track Name": "اسم المسار",
@@ -139,7 +139,7 @@
   "Invalid email": "البريد الإلكتروني غير صالح",
   "tracking": {
     "title": "تتبع الطلب",
-    "home": "الرئيسية",
+    "Home": "الرئيسية",
     "trackYourOrder": "تتبع طلبك",
     "placeholder": "أدخل رقم التتبع الخاص بك",
     "trackOrderBtn": "تتبع الطلب",
@@ -149,9 +149,20 @@
     "trackingId": "رقم التتبع",
     "status": "الحالة",
     "closeBtn": "إغلاق",
-    "FAQs":"الأسئلة الشائعة",
-    "Welcome,":"مرحبا،",
-    "Acount":"الحساب"
-
-  }
+    "FAQs": "الأسئلة الشائعة"
+  },
+  "title": "تتبع الطلب",
+  "trackYourOrder": "تتبع طلبك",
+  "placeholder": "أدخل رقم التتبع الخاص بك",
+  "trackOrderBtn": "تتبع الطلب",
+  "invalidPrefix": "رقم التتبع يجب أن يبدأ بـ CANN-",
+  "notFound": "لم يتم العثور على الطلب",
+  "orderStatusTitle": "حالة الطلب",
+  "trackingId": "رقم التتبع",
+  "status": "الحالة",
+  "closeBtn": "إغلاق",
+  "FAQs": "الأسئلة الشائعة",
+  "Welcome,": "مرحبا،",
+  "Account": "الحساب",
+  "Fast and reliable sea freight from Dubai to Africa and worldwide — safe, efficient, and cost-effective.": "شحن بحري سريع وموثوق من دبي إلى أفريقيا والعالم — آمن، فعال، وذو تكلفة معقولة."
 }

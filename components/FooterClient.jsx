@@ -135,6 +135,7 @@ const Footer = ({ locale, setting, services }) => {
                   <img
                     src={setting?.logo || "/images/cannata21.png"}
                     alt="logo"
+                    loading="lazy"
                   />
                 </div>
                 <div className="d-flex pt-2 align-items-start">
@@ -186,6 +187,7 @@ const Footer = ({ locale, setting, services }) => {
                   <img
                     src={setting?.logo || "/images/cannata21.png"}
                     alt="logo"
+                    loading="lazy"
                   />
                 </div>
                 <div className="d-flex pt-2 align-items-start">

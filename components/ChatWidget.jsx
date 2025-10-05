@@ -113,6 +113,7 @@ export default function ChatWidget() {
             <div className="support-info">
               <img
                 src="/images/bot.jpg"
+                loading="lazy"
                 alt="Support"
                 className="avatar-header"
               />
@@ -132,6 +133,7 @@ export default function ChatWidget() {
                     <img
                       src="/images/bot.jpg"
                       alt="Support"
+                      loading="lazy"
                       className="avatar"
                     />
                   )}
@@ -141,6 +143,7 @@ export default function ChatWidget() {
                         <img
                           src={URL.createObjectURL(msg.file)}
                           alt="uploaded"
+                          loading="lazy"
                           className="uploaded-img"
                         />
                       ) : (
@@ -156,6 +159,7 @@ export default function ChatWidget() {
                     <img
                       src="https://cdn-icons-png.flaticon.com/512/194/194915.png"
                       alt="User"
+                      loading="lazy"
                       className="avatar"
                     />
                   )}

@@ -43,6 +43,7 @@ export default function Home6Client({locale, posts }) {
               <div className="image-container">
                 <img
                   src={post.image}
+                  loading="lazy"
                   alt={post.image_alt}
                   className="top-image"
                 />

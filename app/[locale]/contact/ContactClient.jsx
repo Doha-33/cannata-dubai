@@ -98,7 +98,7 @@ export default function ContactClient({ setting, locale }) {
         <h2 className="py-3">{t("Get In Touch")}</h2>
         <div className="call-divs">
           <div className="call py-3">
-            <img src="/images/Frame14.png" style={{ width: "18%" }} alt="call us" />
+            <img src="/images/Frame14.png" loading="lazy" style={{ width: "18%" }} alt="call us" />
             <h5>{t("Call Us")}</h5>
             <div className="text-danger d-flex flex-column">
               <span>{setting?.phone}</span>
@@ -107,7 +107,7 @@ export default function ContactClient({ setting, locale }) {
           </div>
 
           <div className="call py-3">
-            <img src="/images/Frame13.png" style={{ width: "18%" }} alt="email" />
+            <img src="/images/Frame13.png" loading="lazy" style={{ width: "18%" }} alt="email" />
             <h5>{t("Email")}</h5>
             <div className="text-danger d-flex flex-column">
               <span>{setting?.email}</span>
@@ -116,7 +116,7 @@ export default function ContactClient({ setting, locale }) {
           </div>
 
           <div className="call py-3">
-            <img src="/images/Frame13(1).png" style={{ width: "18%" }} alt="address" />
+            <img src="/images/Frame13(1).png" loading="lazy" style={{ width: "18%" }} alt="address" />
             <h5>{t("Address")}</h5>
             <div className="m-1 text-danger d-flex flex-column">
               {locations.map((location, index) => (
@@ -240,6 +240,7 @@ export default function ContactClient({ setting, locale }) {
           <img
             src="/images/Container.png"
             alt="contact"
+            loading="lazy"
             className="img-fluid"
             style={{ maxHeight: "500px" }}
           />

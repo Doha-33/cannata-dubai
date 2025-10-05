@@ -44,9 +44,9 @@ const Navbar = () => {
 
   const removeToken = () => {
     localStorage.removeItem("Auth_Token");
-    localStorage.removeItem("User_Name"); // لو عايزة تمسحي الاسم برضه
-    setAuthToken(null); // ✨ تحدثي الstate
-    setUserName(""); // ✨ تمسحي الاسم من الواجهة
+    localStorage.removeItem("User_Name");
+    setAuthToken(null);
+    setUserName("");
   };
 
   useEffect(() => {
@@ -77,7 +77,7 @@ const Navbar = () => {
               aria-expanded="false"
             >
               <IoPersonCircleOutline size={26} className="m-2" />
-              <span>{authToken ? `${t("Welcome,")} ${userName}`  : t("Acount")}</span>
+              <span>{authToken ? `${t("Welcome,")} ${userName}`  : t("Account")}</span>
             </button>
 
             <ul className="dropdown-menu dropdown-menu-end shadow-sm border-0 rounded-3 p-2">
@@ -144,7 +144,7 @@ const Navbar = () => {
         <div className="d-flex justify-content-between align-items-center">
           <Link
             className="btn btn-sm d-none d-lg-block my-0 mx-5"
-            href="https://new.cannata.co/"
+            href="https://cannata.co/"
             style={{ backgroundColor: "#C82338", color: "white" }}
             type="button"
           >
@@ -205,7 +205,7 @@ const Navbar = () => {
                   right: isArabic ? "-5%" : "60%",
                 }}
               >
-                {t("shipping")}
+                {t("Shipping")}
               </button>
               <button
                 className={`py-2 ${isArabic ? "pe-5" : "ps-5"}`}
@@ -244,7 +244,7 @@ const Navbar = () => {
                   href={`/${locale}/`}
                   onClick={handleNavItemClick}
                 >
-                  {t("home")}
+                  {t("Home")}
                 </Link>
               </li>
               <li className="nav-item">
@@ -253,7 +253,7 @@ const Navbar = () => {
                   href={`/${locale}/about`}
                   onClick={handleNavItemClick}
                 >
-                  {t("about")}
+                  {t("About")}
                 </Link>
               </li>
               <li className="nav-item">
@@ -262,7 +262,7 @@ const Navbar = () => {
                   href={`/${locale}/services`}
                   onClick={handleNavItemClick}
                 >
-                  {t("service")}
+                  {t("Service")}
                 </Link>
               </li>
               <li className="nav-item">
@@ -271,7 +271,7 @@ const Navbar = () => {
                   href={`/${locale}/blogs`}
                   onClick={handleNavItemClick}
                 >
-                  {t("blog")}
+                  {t("Blogs")}
                 </Link>
               </li>
               <li className="nav-item">
@@ -280,7 +280,7 @@ const Navbar = () => {
                   href={`/${locale}/gallery`}
                   onClick={handleNavItemClick}
                 >
-                  {t("gallary")}
+                  {t("Gallery")}
                 </Link>
               </li>
               {/* <li className="nav-item">
@@ -298,7 +298,7 @@ const Navbar = () => {
                   href={`/${locale}/contact`}
                   onClick={handleNavItemClick}
                 >
-                  {t("contact")}
+                  {t("Contact Us")}
                 </Link>
               </li>
             </ul>
@@ -308,6 +308,7 @@ const Navbar = () => {
               <img
                 src={setting?.logo || "/cannata21.png"}
                 alt="Logo"
+                loading="lazy"
                 style={{
                   width: "45px",
                   height: "45px",

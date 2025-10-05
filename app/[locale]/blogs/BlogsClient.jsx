@@ -34,6 +34,7 @@ export default function BlogsClient({ posts, locale }) {
             <div className="image-container">
               <img
                 src={post.image}
+                loading="lazy"
                 alt={post.image_alt}
                 className="top-image"
                 style={{ width: "100%", height: "200px", objectFit: "cover" }}

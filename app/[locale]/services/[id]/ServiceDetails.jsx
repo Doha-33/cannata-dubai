@@ -82,6 +82,7 @@ const ServiceDetails = ({
             <div className="w-100 d-flex flex-column align-items-center ">
               <img
                 src={currentService.image || "/images/image11.png"}
+                loading="lazy"
                 alt={currentService.image_alt}
                 style={{ width: "50%", height: "350px", margin: "auto" }}
               />
@@ -176,7 +177,7 @@ const ServiceDetails = ({
               textAlign: "center",
             }}
           >
-            <h5>{t("OUR CORE SERVICES")}</h5>
+            <h6>{t("OUR CORE SERVICES")}</h6>
 
             <div
               style={{
@@ -216,7 +217,7 @@ const ServiceDetails = ({
               textAlign: "center",
             }}
           >
-            <h5>{t("CONTACT INFO")}</h5>
+            <h6>{t("CONTACT INFO")}</h6>
             <div style={{ color: "white", paddingTop: "5%" }}>
               <div className="d-flex p-1 align-items-start">
                 <FiPhoneCall
@@ -273,7 +274,7 @@ const ServiceDetails = ({
               cursor: "pointer",
             }}
           >
-            <h5>{t("Custom Clearnace")}</h5>
+            <h6>{t("Custom Clearnace")}</h6>
           </div>
         </div>
       </div>
